@@ -1,0 +1,56 @@
+//: Playground - noun: Velocímetro Digital
+
+import UIKit
+
+enum Velocidades : Int {
+
+    case Apagado = 0, VelocidadBaja = 20, VelocidadMedia = 50, VelocidadAlta = 120
+   
+    init (velocidadInicial : Velocidades) {
+    self = velocidadInicial
+        
+    }
+
+}
+
+class Auto  {
+    
+    var velocidad : Velocidades
+
+    
+    init () {
+        self.velocidad = .Apagado
+
+    }
+    
+    func cambioDeVelocidad () -> (actual: Int, velocidadEnCadena: String) {
+ 
+        
+        switch self.velocidad {
+        case.Apagado:
+            self.velocidad = .VelocidadBaja
+ 
+        case.VelocidadBaja:
+            self.velocidad = .VelocidadMedia
+
+        case.VelocidadMedia:
+            self.velocidad = .VelocidadAlta
+
+        case.VelocidadAlta:
+            self.velocidad = .VelocidadMedia
+            
+        }
+        
+        return (velocidad.rawValue, "\(velocidad)")
+    
+}
+}
+
+var auto = Auto ()
+
+for i in 1...20 {
+let tupla = auto.cambioDeVelocidad()
+    print ("\(tupla.0), \(tupla.1)")
+
+}
+
